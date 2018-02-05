@@ -19,13 +19,9 @@ import android.util.AttributeSet;
 import android.util.Log;
 import android.view.View;
 
-import ir.beigirad.zigzagview.R;
 
 import static android.graphics.Bitmap.Config.ALPHA_8;
-import static android.graphics.Bitmap.Config.ARGB_4444;
-import static android.graphics.Bitmap.Config.ARGB_8888;
 import static android.graphics.Color.BLACK;
-import static android.graphics.Color.BLUE;
 import static android.graphics.Color.TRANSPARENT;
 import static android.graphics.PorterDuff.Mode.SRC_IN;
 
@@ -105,7 +101,6 @@ public class ZigzagView extends View {
 
         float x = (float) (seed / 2);
         float upHeight = bottom - h;
-        float downHeight = bottom;
 
         for (int i = 0; i < count; i++) {
             int startSeed = (i * seed) + sideDiff + (int)left;
@@ -118,7 +113,7 @@ public class ZigzagView extends View {
             }
 
             this.mPath.lineTo(startSeed + x, upHeight);
-            this.mPath.lineTo(endSeed, downHeight);
+            this.mPath.lineTo(endSeed, bottom);
         }
         generateShadow();
         canvas.drawBitmap(mShadow,0,mShadowBlurRadius/2,null);
